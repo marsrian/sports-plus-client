@@ -1,6 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SocialLink from "../Shared/SocialLink/SocialLink";
 import { useForm } from "react-hook-form";
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const SignUp = () => {
   const {
@@ -10,7 +12,45 @@ const SignUp = () => {
     formState: { errors },
   } = useForm();
   const password = watch("password");
-  const onSubmit = (data) => console.log(data);
+  const { createUser, updateUserProfile, logOut } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const onSubmit = (data) => {
+    createUser(data.email, data.password).then((result) => {
+      const loggedUser = result.user;
+      console.log(loggedUser);
+
+      updateUserProfile(data.name, data.photoURL)
+        .then(() => {
+          const saveUser = { name: data.name, email: data.email };
+          console.log(saveUser);
+    //       fetch("https://bistro-boss-server-marsrian.vercel.app/users", {
+    //         method: "POST",
+    //         headers: {
+    //           "content-type": "application/json",
+    //         },
+    //         body: JSON.stringify(saveUser),
+    //       })
+    //         .then((res) => res.json())
+    //         .then((data) => {
+    //           if (data.insertedId) {
+    //             // reset();
+    //             Swal.fire({
+    //               position: "top-end",
+    //               icon: "success",
+    //               title: "User created successfully",
+    //               timer: 1500,
+    //             });
+                logOut()
+                  .then(() => {})
+                  .catch((error) => error.message);
+                navigate("/login");
+    //           }
+    //         });
+        })
+        .catch((error) => console.log(error.message));
+    });
+      
+  };
 
   return (
     <div className="mt-12">
@@ -50,13 +90,13 @@ const SignUp = () => {
             )}
           </div>
           <div className="">
-            <label className="font-semibold" htmlFor="photo">
+            <label className="font-semibold" htmlFor="photoURL">
               Photo URL
             </label>
             <input
               className="border-2 border-[#C5C5C5] py-2 px-3 w-full rounded-lg mt-2"
               type="text"
-              {...register("photo", { required: "Photo URL is required" })}
+              {...register("photoURL", { required: "Photo URL is required" })}
               id=""
               placeholder="Enter Photo URL"
             />
