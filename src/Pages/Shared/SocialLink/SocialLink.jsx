@@ -19,6 +19,7 @@ const SocialLink = () => {
       const saveUser = {
         name: loggedInUser.displayName,
         email: loggedInUser.email,
+        photoURL: loggedInUser.photoURL
       };
       fetch("http://localhost:5000/users", {
         method: "POST",

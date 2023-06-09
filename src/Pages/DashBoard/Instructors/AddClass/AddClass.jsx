@@ -25,7 +25,7 @@ const AddClass = () => {
       .then((imgResponse) => {
         if (imgResponse.success) {
           const imgURL = imgResponse.data.display_url;
-          const { className, price,instructorName, email, seats } = data;
+          const { className, price, instructorName, email, seats } = data;
           const newClass = {
             className,
             image: imgURL,

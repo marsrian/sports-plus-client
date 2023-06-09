@@ -25,12 +25,12 @@ const Navbar = () => {
         </ActiveLink>
       </li>
       <li>
-        <ActiveLink className="text-lg font-bold" to="/instructors">
+        <ActiveLink className="text-lg font-bold" to="/allinstructors">
           Instructors
         </ActiveLink>
       </li>
       <li>
-        <ActiveLink className="text-lg font-bold" to="/classes">
+        <ActiveLink className="text-lg font-bold" to="/allclasses">
           Classes
         </ActiveLink>
       </li>

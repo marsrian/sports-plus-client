@@ -4,7 +4,6 @@ import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 import NotFound from "../Pages/Shared/NotFound/NotFound";
-import Instructors from "../Pages/Instructors/Instructors";
 import PrivetRoute from "./PrivetRoute";
 import DashBoard from "../layout/DashBoard";
 import ManageClasses from "../Pages/DashBoard/Admin/ManageClasses/ManageClasses";
@@ -12,9 +11,10 @@ import ManageUsers from "../Pages/DashBoard/Admin/ManageUsers/ManageUsers";
 import MySelectedClasses from "../Pages/DashBoard/Student/MySelectedClasses/MySelectedClasses";
 import Payment from "../Pages/DashBoard/Student/Payment/Payment";
 import MyEnrolledClasses from "../Pages/DashBoard/Student/MyEnrolledClasses/MyEnrolledClasses";
-import Classes from "../Pages/Classes/Classes";
 import AddClass from "../Pages/DashBoard/Instructors/AddClass/AddClass";
 import MyClasses from "../Pages/DashBoard/Instructors/MyClasses/MyClasses";
+import AllInstructors from "../Pages/AllInstructors/AllInstructors";
+import AllClasses from "../Pages/AllClasses/AllClasses";
 
 const router = createBrowserRouter([
   {
@@ -26,12 +26,12 @@ const router = createBrowserRouter([
             element: <Home></Home>
         },
         {
-            path: "instructors",
-            element: <Instructors></Instructors>
+            path: "allinstructors",
+            element: <AllInstructors></AllInstructors>
         },
         {
-            path: "classes",
-            element: <Classes></Classes>
+            path: "allclasses",
+            element: <AllClasses></AllClasses>
         },
     ],
   },

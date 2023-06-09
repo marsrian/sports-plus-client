@@ -21,7 +21,7 @@ const ManageClasses = () => {
           Swal.fire({
             position: "top-end",
             icon: "success",
-            title: `$status update successfully`,
+            title: "status update successfully",
             showConfirmButton: "false",
             timer: 1500,
           });
