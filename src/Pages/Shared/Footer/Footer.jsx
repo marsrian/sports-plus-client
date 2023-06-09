@@ -3,7 +3,7 @@
 const Footer = () => {
     return (
         <div>
-            <p>© copyright All right reserved -Mars Rian</p>
+            <p className="text-center">© copyright All right reserved -Mars Rian</p>
         </div>
     );
 };

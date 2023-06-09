@@ -3,6 +3,7 @@ import SocialLink from "../Shared/SocialLink/SocialLink";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
   const {
@@ -21,41 +22,39 @@ const SignUp = () => {
 
       updateUserProfile(data.name, data.photoURL)
         .then(() => {
-          const saveUser = { name: data.name, email: data.email };
-          console.log(saveUser);
-    //       fetch("https://bistro-boss-server-marsrian.vercel.app/users", {
-    //         method: "POST",
-    //         headers: {
-    //           "content-type": "application/json",
-    //         },
-    //         body: JSON.stringify(saveUser),
-    //       })
-    //         .then((res) => res.json())
-    //         .then((data) => {
-    //           if (data.insertedId) {
-    //             // reset();
-    //             Swal.fire({
-    //               position: "top-end",
-    //               icon: "success",
-    //               title: "User created successfully",
-    //               timer: 1500,
-    //             });
+          const saveUser = { name: data.name, email: data.email, role: "student" };
+          fetch("http://localhost:5000/users", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(saveUser),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.insertedId) {
+                // reset();
+                Swal.fire({
+                  position: "top-end",
+                  icon: "success",
+                  title: "User created successfully",
+                  timer: 1500,
+                });
                 logOut()
                   .then(() => {})
                   .catch((error) => error.message);
                 navigate("/login");
-    //           }
-    //         });
+              }
+            });
         })
         .catch((error) => console.log(error.message));
     });
-      
   };
 
   return (
     <div className="mt-12">
       <div className="border-2 border-[#ABABAB] px-4 md:px-12 py-4 md:py-6 md:w-1/2 mx-auto rounded-[10px]">
-        <h2 className="font-bold text-2xl mb-8 text-center">
+        <h2 className="mb-8 text-2xl font-bold text-center">
           Create an account
         </h2>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -71,7 +70,7 @@ const SignUp = () => {
               placeholder="Enter Name"
             />
             {errors.name && (
-              <p className="text-red-500 text-sm">{errors.name.message}</p>
+              <p className="text-sm text-red-500">{errors.name.message}</p>
             )}
           </div>
           <div className="my-3">
@@ -86,7 +85,7 @@ const SignUp = () => {
               placeholder="Enter email"
             />
             {errors.email && (
-              <p className="text-red-500 text-sm">{errors.email.message}</p>
+              <p className="text-sm text-red-500">{errors.email.message}</p>
             )}
           </div>
           <div className="">
@@ -101,7 +100,7 @@ const SignUp = () => {
               placeholder="Enter Photo URL"
             />
             {errors.photo && (
-              <p className="text-red-500 text-sm">{errors.photo.message}</p>
+              <p className="text-sm text-red-500">{errors.photo.message}</p>
             )}
           </div>
           <div className="my-3">
@@ -127,7 +126,7 @@ const SignUp = () => {
               placeholder="Enter Password"
             />
             {errors.password && (
-              <p className="text-red-500 text-sm">{errors.password.message}</p>
+              <p className="text-sm text-red-500">{errors.password.message}</p>
             )}
           </div>
           <div className="mb-4">
@@ -146,24 +145,26 @@ const SignUp = () => {
               placeholder="Confirm Password"
             />
             {errors.confirm && (
-              <p className="text-red-500 text-sm">{errors.confirm.message}</p>
+              <p className="text-sm text-red-500">{errors.confirm.message}</p>
             )}
           </div>
           <input
-            className="w-full py-3 bg-[#2cdbde] rounded-[10px] font-semibold text-lg"
+            className="w-full py-3 bg-[#2cdbde] rounded-[10px] font-semibold text-lg cursor-pointer"
             type="submit"
             value="Sign Up"
           />
         </form>
-        <p className="text-center mt-2">
+        <p className="mt-2 text-center">
           Already have an account?{" "}
-          <Link className="text-blue-600 font-semibold" to="/login">
+          <Link className="font-semibold text-blue-600" to="/login">
             Login
           </Link>
         </p>
       </div>
-      <div className="divider w-1/3 mx-auto mb-3">Or</div>
-      <SocialLink></SocialLink>
+      <div className="w-1/3 mx-auto mb-3 divider">Or</div>
+      <div className="mb-6">
+        <SocialLink></SocialLink>
+      </div>
     </div>
   );
 };

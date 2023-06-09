@@ -10,6 +10,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
 } from "firebase/auth";
+import axios from "axios";
 
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
@@ -50,21 +51,21 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      setLoading(false);
+      console.log("current user", currentUser);
 
       // get and set token
-    //   if (currentUser) {
-    //     axios
-    //       .post("https://bistro-boss-server-marsrian.vercel.app/jwt", {
-    //         email: currentUser.email,
-    //       })
-    //       .then((data) => {
-    //         localStorage.setItem("access-token", data.data.token);
-    //         setLoading(false);
-    //       });
-    //   } else {
-    //     localStorage.removeItem("access-token");
-    //   }
+      if (currentUser) {
+        axios
+          .post("http://localhost:5000/jwt", {
+            email: currentUser.email,
+          })
+          .then((data) => {
+            localStorage.setItem("access-token", data.data.token);
+            setLoading(false);
+          });
+      } else {
+        localStorage.removeItem("access-token");
+      }
     });
     return () => {
       return unsubscribe();

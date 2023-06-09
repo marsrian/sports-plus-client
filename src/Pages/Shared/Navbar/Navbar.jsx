@@ -1,14 +1,50 @@
-import logo from '../../../assets/logo/logo.png'
+import { Link } from "react-router-dom";
+import logo from "../../../assets/logo/logo.png";
 import ActiveLink from "../../../components/ActiveLink/ActiveLink";
+import { AuthContext } from "../../../providers/AuthProvider";
+import { useContext } from "react";
+import useAdmin from "../../../hooks/useAdmin";
+import useInstructor from "../../../hooks/useInstructor";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor();
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.log(error));
+  };
+
   const navInfo = (
     <>
-      <li><ActiveLink className="text-lg font-bold" to="/">Home</ActiveLink></li>
-      <li><ActiveLink className="text-lg font-bold" to="/instructors">Instructors</ActiveLink></li>
-      <li><ActiveLink className="text-lg font-bold" to="/classes">Classes</ActiveLink></li>
-      <li><ActiveLink className="text-lg font-bold" to="/dashboard">DashBoard</ActiveLink></li>
-      <li><ActiveLink className="text-lg font-bold" to="/login">login</ActiveLink></li>
+      <li>
+        <ActiveLink className="text-lg font-bold" to="/">
+          Home
+        </ActiveLink>
+      </li>
+      <li>
+        <ActiveLink className="text-lg font-bold" to="/instructors">
+          Instructors
+        </ActiveLink>
+      </li>
+      <li>
+        <ActiveLink className="text-lg font-bold" to="/classes">
+          Classes
+        </ActiveLink>
+      </li>
+      {user && <li>
+        <Link
+          to={
+            isAdmin
+              ? "/dashboard/manageClasses"
+              : isInstructor ? "/dashboard/addClass" : "/dashboard/mySelectedClasses"
+          }
+        >
+          DashBoard
+        </Link>
+      </li>}
     </>
   );
   return (
@@ -41,12 +77,33 @@ const Navbar = () => {
         <img className="w-20 h-20" src={logo} alt="" />
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="flex justify-center px-1 gap-6">
-          {navInfo}
-        </ul>
+        <ul className="flex justify-center px-1 gap-6">{navInfo}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
+        {user ? (
+          <>
+            <button
+              onClick={handleLogOut}
+              className="text-[#2cdbde] px-3 py-2 bg-transparent border-2 border-[#2cdbde] rounded-lg text-lg font-bold hover:bg-[#2cdbde] hover:text-white mr-2"
+            >
+              Log Out
+            </button>
+            <img
+              className="w-12 h-12 rounded-full"
+              src={user?.photoURL}
+              alt=""
+            />
+          </>
+        ) : (
+          <>
+            <Link
+              className="text-[#2cdbde] px-3 py-2 bg-transparent border-2 border-[#2cdbde] rounded-lg text-lg font-bold hover:bg-[#2cdbde] hover:text-white mr-2"
+              to="/login"
+            >
+              Login
+            </Link>
+          </>
+        )}
       </div>
     </div>
   );
