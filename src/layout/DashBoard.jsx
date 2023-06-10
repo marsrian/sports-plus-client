@@ -62,10 +62,10 @@ const DashBoard = () => {
               <NavLink to="/">Home</NavLink>{" "}
             </li>
             <li>
-              <NavLink to="/instructors"> Instructors</NavLink>
+              <NavLink to="/allinstructors"> Instructors</NavLink>
             </li>
             <li>
-              <NavLink to="/classes">Classes</NavLink>
+              <NavLink to="/allclasses">Classes</NavLink>
             </li>
           </ul>
         </div>

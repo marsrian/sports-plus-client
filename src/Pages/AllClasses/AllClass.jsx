@@ -1,16 +1,23 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
+import { useEffect, useState } from "react";
 
 const AllClass = ({ classAll }) => {
   const { _id, image, className, instructorName, seats, price } = classAll;
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const { user } = useAuth();
-  // const [, refetch] = useCart();
   const navigate = useNavigate();
   const location = useLocation();
 
+  useEffect(() => {
+    const disabledState = localStorage.getItem(`isButtonDisabled_${_id}`) === "true";
+    setIsButtonDisabled(disabledState);
+  }, [_id]);
+
   const handleAddToCart = (item) => {
     console.log(item);
+    setIsButtonDisabled(false);
     if (user && user.email) {
       const cartItem = {
         classId: _id,
@@ -40,6 +47,8 @@ const AllClass = ({ classAll }) => {
               timer: 1500,
             });
           }
+          setIsButtonDisabled(true);
+          localStorage.setItem(`isButtonDisabled_${_id}`, "false");
         });
     } else {
       Swal.fire({
@@ -57,8 +66,14 @@ const AllClass = ({ classAll }) => {
     }
   };
 
+  useEffect(() => {
+    if (isButtonDisabled) {
+      localStorage.setItem(`isButtonDisabled_${_id}`, "true"); // Update local storage
+    }
+  }, [isButtonDisabled, _id]);
+
   return (
-    <div className="card card-compact w-full bg-base-100 shadow-xl">
+    <div className="card card-compact w-full bg-blue-400 shadow-xl">
       <figure>
         <img src={image} alt="Shoes" className="w-full h-72" />
       </figure>
@@ -70,9 +85,10 @@ const AllClass = ({ classAll }) => {
         <div className="card-actions justify-end text-center">
           <button
             onClick={() => handleAddToCart(classAll)}
-            className="btn btn-outline border-0 border-b-4 mt-4 bg-slate-100 border-orange-400"
+            disabled={isButtonDisabled}
+            className="btn btn-outline mt-4 bg-slate-100 border-orange-400"
           >
-            Add To Cart
+            {isButtonDisabled ? "Adding..." : "Add To Cart"}
           </button>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import useCart from "../../../../hooks/useCart";
+import { FaTrashAlt } from 'react-icons/fa';
 
 const MySelectedClasses = () => {
   const [cart, refetch] = useCart();
@@ -35,7 +36,7 @@ const MySelectedClasses = () => {
   return (
     <div className="w-full">
       <div className="uppercase font-semibold flex justify-evenly h-[60px] items-center">
-        <h2>Total Classes: {cart.length}</h2>
+        <h2>Total Selected Classes: {cart.length}</h2>
       </div>
       <div className="overflow-x-auto w-full">
         <table className="table w-full">
@@ -68,8 +69,8 @@ const MySelectedClasses = () => {
                 <td>{item.instructorName}</td>
                 <td className="text-end">${item.price}</td>
                 <td>
-                  <Link to="/dashboard/payment">
-                    <button className="btn btn-warning btn-sm">Pay</button>
+                  <Link to={`/dashboard/payment/${item.price}`}>
+                    <button className="btn btn-primary btn-sm">Pay</button>
                   </Link>
                 </td>
                 <td>
@@ -77,8 +78,7 @@ const MySelectedClasses = () => {
                     onClick={() => handleDelete(item)}
                     className="btn btn-ghost bg-red-600 text-white"
                   >
-                    {/* <FaTrashAlt></FaTrashAlt>{" "} */}
-                    Delete
+                    <FaTrashAlt></FaTrashAlt>{" "}
                   </button>
                 </td>
               </tr>
