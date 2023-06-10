@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import AllClass from "../../AllClasses/AllClass";
+import PopularClass from "./PopularClass";
 
 
 const PopularClasses = () => {
@@ -21,7 +21,7 @@ const PopularClasses = () => {
       </h2>
       <div className=" mt-10 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-screen-xl mx-auto">
         {classes.slice(0,6).map((classAll) => (
-          <AllClass key={classAll._id} classAll={classAll}></AllClass>
+          <PopularClass key={classAll._id} classAll={classAll}></PopularClass>
         ))}
       </div>
     </div>
