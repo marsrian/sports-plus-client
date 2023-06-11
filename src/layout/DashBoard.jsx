@@ -2,6 +2,17 @@ import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
 import useInstructor from "../hooks/useInstructor";
 import Footer from "../Pages/Shared/Footer/Footer";
+import {
+  FaBookReader,
+  FaCheckCircle,
+  FaHome,
+  FaList,
+  FaListOl,
+  FaRegListAlt,
+  FaUserCheck,
+  FaUserFriends,
+  FaUserGraduate,
+} from "react-icons/fa";
 
 const DashBoard = () => {
   const [isAdmin] = useAdmin();
@@ -26,32 +37,58 @@ const DashBoard = () => {
             {isAdmin ? (
               <>
                 <li>
-                  <NavLink to="/dashboard/manageClasses">
+                  <NavLink
+                    className="mb-2 flex items-center gap-2 border-2 p-2 rounded-lg"
+                    to="/dashboard/manageClasses"
+                  >
                     {" "}
-                    Manage Classes
+                    <FaList className="mr-2"></FaList> Manage Classes
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/dashboard/manageUsers"> Manage Users</NavLink>
+                  <NavLink
+                    className="flex items-center gap-2 border-2 p-2 rounded-lg"
+                    to="/dashboard/manageUsers"
+                  >
+                    <FaUserFriends className="mr-2"></FaUserFriends> Manage Users
+                  </NavLink>
                 </li>
               </>
             ) : isInstructor ? (
               <>
-                <NavLink className="mb-3" to="/dashboard/addClass">
-                  Add a Class
-                </NavLink>
-                <NavLink to="/dashboard/myClasses">My Classes</NavLink>
+                <li>
+                  <NavLink
+                    className="mb-3 flex items-center gap-2 border-2 p-2 rounded-lg"
+                    to="/dashboard/addClass"
+                  >
+                    <FaRegListAlt className="mr-2"></FaRegListAlt> Add a Class
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    className="flex items-center gap-2 border-2 p-2 rounded-lg"
+                    to="/dashboard/myClasses"
+                  >
+                    <FaListOl className="mr-2"></FaListOl> My Classes
+                  </NavLink>
+                </li>
               </>
             ) : (
               <>
                 <li>
-                  <NavLink to="/dashboard/mySelectedClasses">
-                    My Selected Classes
+                  <NavLink
+                    className="mb-2 flex items-center gap-2 border-2 p-2 rounded-lg"
+                    to="/dashboard/mySelectedClasses"
+                  >
+                    <FaCheckCircle className="mr-2"></FaCheckCircle> My Selected Classes
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/dashboard/myEnrolledClasses">
-                    My Enrolled Classes
+                  <NavLink
+                    className="flex items-center gap-2 border-2 p-2 rounded-lg"
+                    to="/dashboard/myEnrolledClasses"
+                  >
+                    <FaUserCheck className="mr-2"></FaUserCheck> My Enrolled Classes
                   </NavLink>
                 </li>
               </>
@@ -59,13 +96,25 @@ const DashBoard = () => {
 
             <div className="divider"></div>
             <li>
-              <NavLink to="/">Home</NavLink>{" "}
+              <NavLink className="flex items-center gap-2 border-2 p-2" to="/">
+                <FaHome className="mr-2"></FaHome> Home
+              </NavLink>{" "}
             </li>
             <li>
-              <NavLink to="/allinstructors"> Instructors</NavLink>
+              <NavLink
+                className="flex items-center border-2 p-2 my-3 "
+                to="/allinstructors"
+              >
+                <FaUserGraduate className="mr-2"></FaUserGraduate> Instructors
+              </NavLink>
             </li>
             <li>
-              <NavLink to="/allclasses">Classes</NavLink>
+              <NavLink
+                className="flex items-center border-2 p-2"
+                to="/allclasses"
+              >
+                <FaBookReader className="mr-2"></FaBookReader> Classes
+              </NavLink>
             </li>
           </ul>
         </div>

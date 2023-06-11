@@ -1,3 +1,4 @@
+import Achievement from "../Achievement/Achievement";
 import Carousel from "../Carousel/Carousel";
 import Instructors from "../Instructors/Instructors";
 import PopularClasses from "../PopularClasses/PopularClasses";
@@ -8,8 +9,9 @@ const Home = () => {
         <div>
             <Carousel></Carousel>
             <PopularClasses></PopularClasses>
-            <div className="mb-8">
             <Instructors></Instructors>
+            <div className="my-8">
+                <Achievement></Achievement>
             </div>
         </div>
     );

@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import notFoundPhoto from '../../../assets/notFound/NotFount.png'
+import { FaArrowLeft } from "react-icons/fa";
 
 const NotFound = () => {
   const navigate = useNavigate();
@@ -16,8 +17,8 @@ const NotFound = () => {
         This Page Not Found
       </p>
       <div className="mt-5 text-center">
-        <button className="px-5 py-2 text-lg font-bold border-2 border-gray-400 rounded-full" onClick={handleBackHome}>
-        Go Back Home
+        <button className="px-5 py-2 text-lg font-bold border-2 border-gray-400 rounded-full flex items-center mx-auto" onClick={handleBackHome}>
+        <FaArrowLeft className="mr-2"></FaArrowLeft> Go Back Home
         </button>
       </div>
     </div>
