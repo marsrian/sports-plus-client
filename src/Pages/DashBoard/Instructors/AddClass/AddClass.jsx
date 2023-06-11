@@ -33,7 +33,8 @@ const AddClass = () => {
             instructorName,
             email,
             seats: parseFloat(seats),
-            status: "pending"
+            status: "pending",
+            student: 0
           };
           console.log(newClass);
           axiosSecure.post("/classes", newClass).then((data) => {

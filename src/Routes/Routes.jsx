@@ -15,6 +15,7 @@ import AddClass from "../Pages/DashBoard/Instructors/AddClass/AddClass";
 import MyClasses from "../Pages/DashBoard/Instructors/MyClasses/MyClasses";
 import AllInstructors from "../Pages/AllInstructors/AllInstructors";
 import AllClasses from "../Pages/AllClasses/AllClasses";
+import PaymentHistory from "../Pages/DashBoard/Student/PaymentHistory/PaymentHistory";
 
 const router = createBrowserRouter([
   {
@@ -69,8 +70,12 @@ const router = createBrowserRouter([
         {
           path: "payment/:id",
           element: <Payment></Payment>,
-          // loader: ({params}) => fetch(`http://localhost:5000/dashboard/payment/${params.id}`)
+          loader: ({params}) => fetch(`http://localhost:5000/selectClass/${params.id}`)
         },
+        {
+          path: 'paymentHistory',
+          element: <PaymentHistory></PaymentHistory>
+        }
     ]
   },
   {

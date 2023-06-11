@@ -19,7 +19,7 @@ const MySelectedClasses = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/carts/${item._id}`, {
+        fetch(`http://localhost:5000/selectClass/${item._id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -69,7 +69,7 @@ const MySelectedClasses = () => {
                 <td>{item.instructorName}</td>
                 <td className="text-end">${item.price}</td>
                 <td>
-                  <Link to={`/dashboard/payment/${item.price}`}>
+                  <Link to={`/dashboard/payment/${item._id}`}>
                     <button className="btn btn-primary btn-sm">Pay</button>
                   </Link>
                 </td>

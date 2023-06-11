@@ -20,7 +20,7 @@ const AllClass = ({ classAll }) => {
     setIsButtonDisabled(false);
     if (user && user.email) {
       const cartItem = {
-        classId: _id,
+        selectClassId: _id,
         className,
         instructorName,
         image,
@@ -28,7 +28,7 @@ const AllClass = ({ classAll }) => {
         seats,
         email: user.email
       };
-      fetch("http://localhost:5000/carts", {
+      fetch("http://localhost:5000/selectClass", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -46,9 +46,9 @@ const AllClass = ({ classAll }) => {
               showConfirmButton: false,
               timer: 1500,
             });
+            setIsButtonDisabled(true);
+            localStorage.setItem(`isButtonDisabled_${_id}`, "false");
           }
-          setIsButtonDisabled(true);
-          localStorage.setItem(`isButtonDisabled_${_id}`, "false");
         });
     } else {
       Swal.fire({

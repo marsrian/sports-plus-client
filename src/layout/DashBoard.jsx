@@ -5,6 +5,7 @@ import Footer from "../Pages/Shared/Footer/Footer";
 import {
   FaBookReader,
   FaCheckCircle,
+  FaDollarSign,
   FaHome,
   FaList,
   FaListOl,
@@ -89,6 +90,14 @@ const DashBoard = () => {
                     to="/dashboard/myEnrolledClasses"
                   >
                     <FaUserCheck className="mr-2"></FaUserCheck> My Enrolled Classes
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    className=" my-3 flex items-center gap-2 border-2 p-2 rounded-lg"
+                    to="/dashboard/paymentHistory"
+                  >
+                    <FaDollarSign className="mr-2"></FaDollarSign> Payment History
                   </NavLink>
                 </li>
               </>

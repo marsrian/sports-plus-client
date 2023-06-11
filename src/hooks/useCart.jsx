@@ -6,10 +6,10 @@ const useCart = () => {
   const { user } = useAuth();
   const [axiosSecure] = useAxiosSecure();
   const { refetch, data: cart = [] } = useQuery({
-    queryKey: ["carts", user?.email],
+    queryKey: ["selectClass", user?.email],
     enabled: !!user?.email && !!localStorage.getItem("access-token"),
     queryFn: async () => {
-      const res = await axiosSecure(`/carts?email=${user?.email}`);
+      const res = await axiosSecure(`/selectClass?email=${user?.email}`);
       console.log("res from axios", res);
       return res.data;
     },
