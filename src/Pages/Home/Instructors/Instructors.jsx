@@ -15,7 +15,7 @@ const Instructors = () => {
   }, []);
 
   return (
-    <div className="mt-10">
+    <div className="mt-20">
       <Slide>
         <h2 className="text-blue-400 font-bold text-2xl md:text-4xl text-center">
           ~~ Popular Instructor ~~

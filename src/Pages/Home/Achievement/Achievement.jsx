@@ -8,12 +8,12 @@ import win12 from "../../../assets/win/w-12.jpg";
 
 const Achievement = () => {
   return (
-    <div className="text-center max-w-screen-xl mx-auto mt-10">
+    <div className="text-center max-w-screen-xl mx-auto mt-20">
       <Slide>
         <h1 className="text-blue-400 font-bold text-2xl md:text-4xl text-center mb-3">~~ Our Achievement ~~</h1>
       </Slide>
 
-      <p className="text-gray-600 mb-4">If you want to learning best skill! join with us.</p>
+      <p className="text-gray-600 mb-8">If you want to learning best skill! join with us.</p>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="border-2 border-gray-400 rounded-lg">

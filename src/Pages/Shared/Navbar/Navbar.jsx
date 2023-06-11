@@ -5,6 +5,7 @@ import ActiveLink from "../../../components/ActiveLink/ActiveLink";
 import { AuthContext } from "../../../providers/AuthProvider";
 import useAdmin from "../../../hooks/useAdmin";
 import useInstructor from "../../../hooks/useInstructor";
+import { FaMoon, FaSun } from 'react-icons/fa';
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -50,7 +51,7 @@ const Navbar = () => {
       </li>
       {user && (
         <li>
-          <Link
+          <ActiveLink
             to={
               isAdmin
                 ? "/dashboard/manageClasses"
@@ -61,7 +62,7 @@ const Navbar = () => {
             className={`${darkTheme ? "text-white" : "text-gray-600"}`}
           >
             DashBoard
-          </Link>
+          </ActiveLink>
         </li>
       )}
     </>
@@ -130,13 +131,13 @@ const Navbar = () => {
           </>
         )}
       </div>
-      <div className="absolute top-4 right-4">
+      <div className="absolute top-8 right-48">
         <button
           onClick={toggleTheme}
-          className={`rounded-full w-8 h-8 bg-gray-300 dark:bg-gray-600 ${
-            darkTheme ? "translate-x-4 bg-green-200" : ""
+          className={`rounded-full bg-gray-300 dark:bg-gray-600 ${
+            darkTheme ? " bg-green-200" : ""
           }`}
-        ></button>
+        > {darkTheme ?  <FaSun className="text-2xl border-2 rounded-full"></FaSun> : <FaMoon className="text-2xl border-2 rounded-full"></FaMoon>}</button>
       </div>
     </div>
   );
