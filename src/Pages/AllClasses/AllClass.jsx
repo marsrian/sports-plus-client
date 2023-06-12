@@ -1,94 +1,3 @@
-// import { useLocation, useNavigate } from "react-router-dom";
-// import useAuth from "../../hooks/useAuth";
-// import Swal from "sweetalert2";
-// // import useAdmin from "../../hooks/useAdmin";
-// // import useInstructor from "../../hooks/useInstructor";
-// // import { useEffect } from "react";
-
-// const AllClass = ({ classAll }) => {
-//   const { _id, image, className, instructorName, seats, price, student } =
-//     classAll;
-//   // const isAdmin = useAdmin();
-//   // const isInstructor = useInstructor();
-//   const { user } = useAuth();
-//   const navigate = useNavigate();
-//   const location = useLocation();
-
-//   const handleAddToCart = (item) => {
-//     console.log(item);
-//     if (user && user.email) {
-//       const cartItem = {
-//         selectClassId: _id,
-//         className,
-//         instructorName,
-//         image,
-//         price,
-//         seats,
-//         email: user.email,
-//       };
-//       fetch("https://sports-plus-server.vercel.app/selectClass", {
-//         method: "POST",
-//         headers: {
-//           "content-type": "application/json",
-//         },
-//         body: JSON.stringify(cartItem),
-//       })
-//         .then((res) => res.json())
-//         .then((data) => {
-//           if (data.insertedId) {
-//             // refetch();
-//             Swal.fire({
-//               position: "top-end",
-//               icon: "success",
-//               title: "class added on the cart",
-//               showConfirmButton: false,
-//               timer: 1500,
-//             });
-//           }
-//         });
-//     } else {
-//       Swal.fire({
-//         title: "Please Login to order the class",
-//         icon: "Warning",
-//         showConfirmButton: true,
-//         confirmButtonColor: "#3085d6",
-//         cancelButtonColor: "#d33",
-//         confirmButtonText: "Login Now!",
-//       }).then((result) => {
-//         if (result.isConfirmed) {
-//           navigate("/login", { state: { from: location } });
-//         }
-//       });
-//     }
-//   };
-
-//   return (
-//     <div className="card card-compact w-full bg-blue-400 shadow-xl">
-//       <figure>
-//         <img src={image} alt="Shoes" className="w-full h-72" />
-//       </figure>
-//       <div className="card-body">
-//         <h2 className="card-title">{className}</h2>
-//         <p>Instructor: {instructorName}</p>
-//         <p>Available Seats: {seats}</p>
-//         <p>Enrolled student: {student}</p>
-//         <p>Price: ${price}</p>
-//         <div className="card-actions justify-end text-center">
-//           <button
-//             onClick={() => handleAddToCart(classAll)}
-//             className="btn btn-outline mt-4 bg-slate-100 border-orange-400"
-//           >
-//             Add To Cart
-//           </button>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default AllClass;
-
-
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
@@ -102,12 +11,12 @@ const AllClass = ({ classAll }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const [isButtonDisabled, setIsButtonDisabled] = useState(false); // State variable to track button disabled state
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false); 
 
   const handleAddToCart = (item) => {
     console.log(item);
     if (user && user.email) {
-      setIsButtonDisabled(true); // Disable the button when clicked
+      setIsButtonDisabled(true);
 
       const cartItem = {
         selectClassId: _id,
