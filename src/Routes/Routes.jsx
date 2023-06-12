@@ -16,6 +16,7 @@ import MyClasses from "../Pages/DashBoard/Instructors/MyClasses/MyClasses";
 import AllInstructors from "../Pages/AllInstructors/AllInstructors";
 import AllClasses from "../Pages/AllClasses/AllClasses";
 import PaymentHistory from "../Pages/DashBoard/Student/PaymentHistory/PaymentHistory";
+import AdminRoute from "./AdminRoute";
 
 const router = createBrowserRouter([
   {
@@ -47,11 +48,11 @@ const router = createBrowserRouter([
       // Admin DashBoard:
       {
         path: "manageClasses",
-        element: <ManageClasses></ManageClasses>,
+        element: <AdminRoute><ManageClasses></ManageClasses></AdminRoute>,
       },
       {
         path: "manageUsers",
-        element: <ManageUsers></ManageUsers>,
+        element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>,
       },
       // Instructor Dashboard:
       {
