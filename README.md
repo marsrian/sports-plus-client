@@ -11,7 +11,7 @@ Hosted in Firebase -> [Sports-Plus](https://sports-plus-3dc2f.web.app/)
 * Banner: slider
 * Popular Classes Section
 * Popular Instructor Section
-* Our Services
+* Our Achievement
 
 # Instructor-Page:
 
