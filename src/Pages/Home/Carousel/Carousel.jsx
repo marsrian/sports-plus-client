@@ -2,6 +2,7 @@ import slider1 from '../../../assets/slider/slider1.jpg';
 import slider2 from '../../../assets/slider/slider2.jpg';
 import slider3 from '../../../assets/slider/slider3.jpg';
 
+
 const Carousel = () => {
   return (
       <div className="carousel w-full h-[600px]">
