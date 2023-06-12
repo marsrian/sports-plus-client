@@ -55,7 +55,6 @@ const MyClasses = () => {
                   <td>{user?.status}</td>
                   <td>{user.student}</td>
                   <td>{user.feedback}</td>
-                  <td></td>
                 </tr>
               ))}
             </tbody>

@@ -32,6 +32,7 @@ const ManageClasses = () => {
               <ManageClassTable
                 key={singleClass._id}
                 singleClass={singleClass}
+                // handleDelete={handleDelete}
                 index={index}
               ></ManageClassTable>
             ))}

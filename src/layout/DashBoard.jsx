@@ -14,8 +14,10 @@ import {
   FaUserFriends,
   FaUserGraduate,
 } from "react-icons/fa";
+import useAuth from "../hooks/useAuth";
 
 const DashBoard = () => {
+  const {user} = useAuth();
   const [isAdmin] = useAdmin();
   const [isInstructor] = useInstructor();
   return (
@@ -37,6 +39,9 @@ const DashBoard = () => {
             {/* Sidebar content here */}
             {isAdmin ? (
               <>
+                <h1 className="text-center text-2xl fomt-semibold text-blue-400 my-4">~~ Admin Home ~~</h1>
+                <img className="w-16 h-16 rounded-full mx-auto mb-4" src={user?.photoURL} alt="" />
+                <h3 className="text-xl font-medium text-amber-700 text-center mb-3">Admin: {user?.displayName}</h3>
                 <li>
                   <NavLink
                     className="mb-2 flex items-center gap-2 border-2 p-2 rounded-lg"
@@ -57,6 +62,9 @@ const DashBoard = () => {
               </>
             ) : isInstructor ? (
               <>
+              <h1 className="text-center text-2xl fomt-semibold text-blue-400 my-4">~~ Instructor Home ~~</h1>
+                <img className="w-16 h-16 rounded-full mx-auto mb-4" src={user?.photoURL} alt="" />
+                <h3 className="text-xl font-medium text-amber-700 text-center mb-3">Instructor: {user?.displayName}</h3>
                 <li>
                   <NavLink
                     className="mb-3 flex items-center gap-2 border-2 p-2 rounded-lg"
@@ -76,6 +84,9 @@ const DashBoard = () => {
               </>
             ) : (
               <>
+              <h1 className="text-center text-2xl fomt-semibold text-blue-400 my-4">~~ Student Home ~~</h1>
+                <img className="w-16 h-16 rounded-full mx-auto mb-4" src={user?.photoURL} alt="" />
+                <h3 className="text-xl font-medium text-amber-700 text-center mb-3">Student: {user?.displayName}</h3>
                 <li>
                   <NavLink
                     className="mb-2 flex items-center gap-2 border-2 p-2 rounded-lg"

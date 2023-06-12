@@ -48,11 +48,19 @@ const router = createBrowserRouter([
       // Admin DashBoard:
       {
         path: "manageClasses",
-        element: <AdminRoute><ManageClasses></ManageClasses></AdminRoute>,
+        element: (
+          <AdminRoute>
+            <ManageClasses></ManageClasses>
+          </AdminRoute>
+        ),
       },
       {
         path: "manageUsers",
-        element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>,
+        element: (
+          <AdminRoute>
+            <ManageUsers></ManageUsers>
+          </AdminRoute>
+        ),
       },
       // Instructor Dashboard:
       {
