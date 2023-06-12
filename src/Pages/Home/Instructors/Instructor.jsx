@@ -1,3 +1,4 @@
+
 const Instructor = ({ instructor }) => {
   const { name, email, photoURL } = instructor;
   return (
