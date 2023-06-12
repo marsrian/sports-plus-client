@@ -4,7 +4,6 @@ import Instructors from "../Instructors/Instructors";
 import PopularClasses from "../PopularClasses/PopularClasses";
 
 const Home = () => {
-    
     return (
         <div>
             <Carousel></Carousel>
