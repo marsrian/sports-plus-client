@@ -4,14 +4,14 @@ import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import useAuth from "../../../../hooks/useAuth";
 
-const CheckOutForm = ({ price, id, selectClassId }) => {
+const CheckOutForm = ({ price, id, selectClassId, sportsName }) => {
   const stripe = useStripe();
   const elements = useElements();
   const { user } = useAuth();
   const [axiosSecure] = useAxiosSecure();
   const [cardError, setCardError] = useState("");
   const [clientSecret, setClientSecret] = useState("");
-    const [processing, setProcessing] = useState(false);
+  const [processing, setProcessing] = useState(false);
   const [transactionId, setTransactionId] = useState("");
   useEffect(() => {
     if (price > 0) {
@@ -47,7 +47,7 @@ const CheckOutForm = ({ price, id, selectClassId }) => {
       // console.log('payment method', paymentMethod)
     }
 
-      setProcessing(true);
+    setProcessing(true);
 
     const { paymentIntent, error: confirmError } =
       await stripe.confirmCardPayment(clientSecret, {
@@ -65,12 +65,13 @@ const CheckOutForm = ({ price, id, selectClassId }) => {
     }
 
     console.log("payment intent", paymentIntent);
-      setProcessing(false);
+    setProcessing(false);
     if (paymentIntent.status === "succeeded") {
       setTransactionId(paymentIntent.id);
       // save payment information to the server
       const payment = {
         id,
+        sportsName,
         email: user?.email,
         transactionId: paymentIntent.id,
         price,
@@ -80,7 +81,7 @@ const CheckOutForm = ({ price, id, selectClassId }) => {
 
       axiosSecure.post("/payments", payment).then((res) => {
         console.log(res.data);
-        fetch(`http://localhost:5000/all-classes/seats/${selectClassId}`, {
+        fetch(`https://sports-plus-server.vercel.app/all-classes/seats/${selectClassId}`, {
           method: "PATCH",
         })
           .then((res) => res.json())
@@ -116,9 +117,15 @@ const CheckOutForm = ({ price, id, selectClassId }) => {
             },
           }}
         />
-        <button type="submit" disabled={!stripe}>
-          Pay
-        </button>
+        <div className="mt-8">
+          <button
+            className="text-[#2cdbde] px-10 py-2 bg-transparent border-2 border-[#2cdbde] rounded-lg text-lg font-bold hover:bg-[#2cdbde] hover:text-white mr-2"
+            type="submit"
+            disabled={!stripe}
+          >
+            Pay
+          </button>
+        </div>
       </form>
       {cardError && <p className="text-red-600 ml-8">{cardError}</p>}
       {transactionId && (

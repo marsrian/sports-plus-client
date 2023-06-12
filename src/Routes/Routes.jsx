@@ -22,74 +22,81 @@ const router = createBrowserRouter([
     path: "/",
     element: <Main></Main>,
     children: [
-        {
-            path: "/",
-            element: <Home></Home>
-        },
-        {
-            path: "allinstructors",
-            element: <AllInstructors></AllInstructors>
-        },
-        {
-            path: "allclasses",
-            element: <AllClasses></AllClasses>
-        },
+      {
+        path: "/",
+        element: <Home></Home>,
+      },
+      {
+        path: "allinstructors",
+        element: <AllInstructors></AllInstructors>,
+      },
+      {
+        path: "allclasses",
+        element: <AllClasses></AllClasses>,
+      },
     ],
   },
   {
     path: "dashboard",
-    element: <PrivetRoute><DashBoard></DashBoard></PrivetRoute>,
+    element: (
+      <PrivetRoute>
+        <DashBoard></DashBoard>
+      </PrivetRoute>
+    ),
     children: [
       // Admin DashBoard:
-        {
-          path: "manageClasses",
-          element: <ManageClasses></ManageClasses>
-        },
-        {
-          path: "manageUsers",
-          element: <ManageUsers></ManageUsers>
-        },
-        // Instructor Dashboard:
-        {
-          path: "addClass",
-          element: <AddClass></AddClass>
-        },
-        {
-          path: "myClasses",
-          element: <MyClasses></MyClasses>
-        },
-        // Student Dashboard:
-        {
-          path: "mySelectedClasses",
-          element: <MySelectedClasses></MySelectedClasses>
-        },
-        {
-          path: "myEnrolledClasses",
-          element: <MyEnrolledClasses></MyEnrolledClasses>
-        },
-        {
-          path: "payment/:id",
-          element: <Payment></Payment>,
-          loader: ({params}) => fetch(`http://localhost:5000/selectClass/${params.id}`)
-        },
-        {
-          path: 'paymentHistory',
-          element: <PaymentHistory></PaymentHistory>
-        }
-    ]
+      {
+        path: "manageClasses",
+        element: <ManageClasses></ManageClasses>,
+      },
+      {
+        path: "manageUsers",
+        element: <ManageUsers></ManageUsers>,
+      },
+      // Instructor Dashboard:
+      {
+        path: "addClass",
+        element: <AddClass></AddClass>,
+      },
+      {
+        path: "myClasses",
+        element: <MyClasses></MyClasses>,
+      },
+      // Student Dashboard:
+      {
+        path: "mySelectedClasses",
+        element: <MySelectedClasses></MySelectedClasses>,
+      },
+      {
+        path: "myEnrolledClasses",
+        element: <MyEnrolledClasses></MyEnrolledClasses>,
+      },
+      {
+        path: "payment/:id",
+        element: <Payment></Payment>,
+        loader: ({ params }) =>
+          fetch(
+            `https://sports-plus-server.vercel.app/selectClass/${params.id}`
+          ),
+      },
+      {
+        path: "paymentHistory",
+        element: <PaymentHistory></PaymentHistory>,
+      },
+    ],
   },
   {
     path: "/login",
-    element: <Login></Login>
+    element: <Login></Login>,
   },
   {
-    path: '/signup',
-    element: <SignUp></SignUp>
+    path: "/signup",
+    element: <SignUp></SignUp>,
   },
   {
-    path: '*',
-    element: <NotFound></NotFound>
-  }
+    path: "*",
+    element: <NotFound></NotFound>,
+  },
 ]);
 
 export default router;

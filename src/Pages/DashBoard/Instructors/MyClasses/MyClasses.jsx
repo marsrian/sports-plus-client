@@ -54,7 +54,7 @@ const MyClasses = () => {
                   <td>{user.price}</td>
                   <td>{user?.status}</td>
                   <td>{user.student}</td>
-                  <td></td>
+                  <td>{user.feedback}</td>
                   <td></td>
                 </tr>
               ))}

@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import useCart from "../../../../hooks/useCart";
-import { FaTrashAlt } from 'react-icons/fa';
+import { FaTrashAlt } from "react-icons/fa";
 
 const MySelectedClasses = () => {
   const [cart, refetch] = useCart();
   console.log(cart);
-//   const total = cart.price;
+  //   const total = cart.price;
 
   const handleDelete = (item) => {
     Swal.fire({
@@ -19,7 +19,7 @@ const MySelectedClasses = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/selectClass/${item._id}`, {
+        fetch(`https://sports-plus-server.vercel.app/selectClass/${item._id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -27,6 +27,8 @@ const MySelectedClasses = () => {
             if (data.deletedCount > 0) {
               refetch();
               Swal.fire("Deleted", "Your file has been deleted", "success");
+              localStorage.removeItem(`isButtonDisabled_${item._id}`) ===
+                "true";
             }
           });
       }

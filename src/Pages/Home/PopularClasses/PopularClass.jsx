@@ -1,7 +1,7 @@
 
 
 const PopularClass = ({ classAll }) => {
-    const { image, className, instructorName, seats, price } = classAll;
+    const { image, className, instructorName, seats, price, student } = classAll;
     return (
         <div className="card card-compact w-full bg-blue-400 shadow-xl">
       <figure>
@@ -11,6 +11,7 @@ const PopularClass = ({ classAll }) => {
         <h2 className="card-title">{className}</h2>
         <p>Instructor: {instructorName}</p>
         <p>Available Seats: {seats}</p>
+        <p>Enrolled student: {student}</p>
         <p>Price: ${price}</p>
         <div className="card-actions justify-end">
           <button className="btn btn-primary">See Details</button>

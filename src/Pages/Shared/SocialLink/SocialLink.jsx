@@ -19,9 +19,9 @@ const SocialLink = () => {
       const saveUser = {
         name: loggedInUser.displayName,
         email: loggedInUser.email,
-        photoURL: loggedInUser.photoURL
+        photoURL: loggedInUser.photoURL,
       };
-      fetch("http://localhost:5000/users", {
+      fetch("https://sports-plus-server.vercel.app/users", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -36,7 +36,10 @@ const SocialLink = () => {
   };
   return (
     <>
-      <button onClick={handleGoogleSign} className="flex items-center p-3 border-2 border-[#C7C7C7] rounded-full w-1/4 mx-auto">
+      <button
+        onClick={handleGoogleSign}
+        className="flex items-center p-3 border-2 border-[#C7C7C7] rounded-full w-1/4 mx-auto"
+      >
         <FaGoogle className="w-6 h-6 mr-14"></FaGoogle>{" "}
         <span className="font-medium">Continue with Google</span>
       </button>

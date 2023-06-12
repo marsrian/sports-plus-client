@@ -22,8 +22,13 @@ const SignUp = () => {
 
       updateUserProfile(data.name, data.photoURL)
         .then(() => {
-          const saveUser = { name: data.name, email: data.email, photoURL: data.photoURL, role: "student" };
-          fetch("http://localhost:5000/users", {
+          const saveUser = {
+            name: data.name,
+            email: data.email,
+            photoURL: data.photoURL,
+            role: "student",
+          };
+          fetch("https://sports-plus-server.vercel.app/users", {
             method: "POST",
             headers: {
               "content-type": "application/json",
@@ -99,8 +104,8 @@ const SignUp = () => {
               id=""
               placeholder="Enter Photo URL"
             />
-            {errors.photo && (
-              <p className="text-sm text-red-500">{errors.photo.message}</p>
+            {errors.photoURL && (
+              <p className="text-sm text-red-500">{errors.photoURL.message}</p>
             )}
           </div>
           <div className="my-3">

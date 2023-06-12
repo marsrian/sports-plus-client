@@ -6,7 +6,7 @@ const AllClasses = () => {
   const [classes, setClasses] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/allClasses/approved`)
+    fetch(`https://sports-plus-server.vercel.app/allClasses/approved`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -22,10 +22,12 @@ const AllClasses = () => {
         </h2>
       </Slide>
       <Fade delay={1e3} cascade damping={1e-1}>
-      <p className="mt-3 text-center text-gray-600">
-        Join our Sports class today and embark on a journey of personal and <br />
-        professional growth. Explore your passions, learn from industry experts.
-      </p>
+        <p className="mt-3 text-center text-gray-600">
+          Join our Sports class today and embark on a journey of personal and{" "}
+          <br />
+          professional growth. Explore your passions, learn from industry
+          experts.
+        </p>
       </Fade>
       <div className=" mt-10 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-screen-xl mx-auto">
         {classes.map((classAll) => (
