@@ -39,7 +39,7 @@ const DashBoard = () => {
             {/* Sidebar content here */}
             {isAdmin ? (
               <>
-                <h1 className="text-center text-2xl fomt-semibold text-blue-400 my-4">~~ Admin Home ~~</h1>
+                <h1 className="text-center text-2xl font-semibold text-blue-400 my-4">~~ Admin Home ~~</h1>
                 <img className="w-16 h-16 rounded-full mx-auto mb-4" src={user?.photoURL} alt="" />
                 <h3 className="text-xl font-medium text-amber-700 text-center mb-3">Admin: {user?.displayName}</h3>
                 <li>
@@ -62,7 +62,7 @@ const DashBoard = () => {
               </>
             ) : isInstructor ? (
               <>
-              <h1 className="text-center text-2xl fomt-semibold text-blue-400 my-4">~~ Instructor Home ~~</h1>
+              <h1 className="text-center text-2xl font-semibold text-blue-400 my-4">~~ Instructor Home ~~</h1>
                 <img className="w-16 h-16 rounded-full mx-auto mb-4" src={user?.photoURL} alt="" />
                 <h3 className="text-xl font-medium text-amber-700 text-center mb-3">Instructor: {user?.displayName}</h3>
                 <li>
@@ -84,7 +84,7 @@ const DashBoard = () => {
               </>
             ) : (
               <>
-              <h1 className="text-center text-2xl fomt-semibold text-blue-400 my-4">~~ Student Home ~~</h1>
+              <h1 className="text-center text-2xl font-semibold text-blue-400 my-4">~~ Student Home ~~</h1>
                 <img className="w-16 h-16 rounded-full mx-auto mb-4" src={user?.photoURL} alt="" />
                 <h3 className="text-xl font-medium text-amber-700 text-center mb-3">Student: {user?.displayName}</h3>
                 <li>
