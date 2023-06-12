@@ -1,6 +1,6 @@
 # b712-summer-camp-client-side-marsrian
 
-##Website-Name: Sports Plus
+## Website-Name: Sports Plus
 
 ## Live Link
 
@@ -48,3 +48,5 @@ Alert -> [sweet-alert](https://sweetalert2.github.io/)
 Icons: -> [React-Icons](https://react-icons.github.io/react-icons/)
 
 Payment -> [Stripe-Payment](https://stripe.com/)
+
+Animation -> [React Awesome Reveal](https://react-awesome-reveal.morello.dev/)
